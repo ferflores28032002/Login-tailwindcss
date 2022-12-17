@@ -11,7 +11,7 @@ export const useSendEmail = () => {
             const { data, status } = await sendEmailApi.post('sendEmail', { name, email })
 
             if(status === 200) {
-                Swal.fire("Se le notifico atraves de un gmail", data.msg, "success");
+                Swal.fire("¡Enviado!", data.msg, "success");
             }
 
 
