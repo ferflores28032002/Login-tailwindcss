@@ -1,3 +1,4 @@
+import Swal from "sweetalert2"
 import { sendEmailApi } from "../api/sendEmail"
 
 
@@ -7,9 +8,11 @@ export const useSendEmail = () => {
 
         try {
 
-            const { data } = await sendEmailApi.post('sendEmail', { name, email })
+            const { data, status } = await sendEmailApi.post('sendEmail', { name, email })
 
-            console.log(data)
+            if(status === 200) {
+                Swal.fire("Se le notifico atraves de un gmail", data.msg, "success");
+            }
 
 
         } catch (error) {
